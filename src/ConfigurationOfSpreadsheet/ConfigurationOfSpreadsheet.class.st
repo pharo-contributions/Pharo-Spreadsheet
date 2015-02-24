@@ -141,7 +141,36 @@ ConfigurationOfSpreadsheet >> baseline01: spec [
 			group: 'Sparse' with: #(#'Collections-Sparse' );
 			group: 'Core' with: #(#'Spreadsheet-Core' );
 			group: 'UI' with: #(#'Spreadsheet-UI' );
-			group: 'Tests' with: #(#'Collections-Tests-Sparse' #'Spreadsheet-Tests-Core' #'Spreadsheet-Tests-UI' ). ].
+			group: 'Tests' with: #(#'Collections-Tests-Sparse' #'Spreadsheet-Tests-Core' #'Spreadsheet-Tests-UI' );
+			group: 'default' with: #('Sparse' 'Core' 'UI' 'Tests' ). ].
+
+]
+
+{ #category : #baselines }
+ConfigurationOfSpreadsheet >> baseline02: spec [
+	<version: '0.2-baseline'>
+
+	spec for: #'common' do: [
+		spec blessing: #'baseline'.
+		spec repository: 'http://smalltalkhub.com/mc/TorstenBergmann/Spreadsheet/main/'.
+		spec 
+			package: #'Collections-Sparse';
+			package: #'Spreadsheet-Core' with: [
+				spec requires: #(#'Collections-Sparse' ). ];
+			package: #'Spreadsheet-UI' with: [
+				spec requires: #(#'Spreadsheet-Core' ). ];
+			package: #'Collections-Tests-Sparse' with: [
+				spec requires: #(#'Collections-Sparse' ). ];
+			package: #'Spreadsheet-Tests-Core' with: [
+				spec requires: #(#'Spreadsheet-Core' ). ];
+			package: #'Spreadsheet-Tests-UI' with: [
+				spec requires: #(#'Spreadsheet-UI' ). ].
+		spec 
+			group: 'Sparse' with: #(#'Collections-Sparse' );
+			group: 'Core' with: #(#'Spreadsheet-Core' );
+			group: 'UI' with: #(#'Spreadsheet-UI' );
+			group: 'Tests' with: #(#'Collections-Tests-Sparse' #'Spreadsheet-Tests-Core' #'Spreadsheet-Tests-UI' );
+			group: 'default' with: #('Sparse' 'Core' 'UI' 'Tests' ). ].
 
 ]
 
@@ -157,7 +186,7 @@ ConfigurationOfSpreadsheet >> customProjectAttributes [
 ConfigurationOfSpreadsheet >> development: spec [
 	<symbolicVersion: #'development'>
 
-	spec for: #'common' version: '0.1-baseline'.
+	spec for: #'common' version: '0.2-baseline'.
 
 ]
 
@@ -172,4 +201,31 @@ ConfigurationOfSpreadsheet >> project [
 		(Smalltalk at: #MetacelloVersionConstructor) on: self project: project.
 		project loadType: #linear. "change to #atomic if desired"
 		project ]
+]
+
+{ #category : #'symbolic versions' }
+ConfigurationOfSpreadsheet >> stable: spec [
+	<symbolicVersion: #'stable'>
+
+	spec for: #'common' version: '1.0'.
+
+]
+
+{ #category : #versions }
+ConfigurationOfSpreadsheet >> version10: spec [
+	<version: '1.0' imports: #('0.1-baseline' )>
+
+	spec for: #'common' do: [
+		spec blessing: #'stable'.
+		spec description: 'version 1.0'.
+		spec author: 'TorstenBergmann'.
+		spec timestamp: '2/24/2015 01:15'.
+		spec 
+			package: #'Collections-Sparse' with: 'Collections-Sparse-TorstenBergmann.1';
+			package: #'Spreadsheet-Core' with: 'Spreadsheet-Core-TorstenBergmann.1';
+			package: #'Spreadsheet-UI' with: 'Spreadsheet-UI-TorstenBergmann.1';
+			package: #'Collections-Tests-Sparse' with: 'Collections-Tests-Sparse-TorstenBergmann.1';
+			package: #'Spreadsheet-Tests-Core' with: 'Spreadsheet-Tests-Core-TorstenBergmann.1';
+			package: #'Spreadsheet-Tests-UI' with: 'Spreadsheet-Tests-UI-TorstenBergmann.1'. ].
+
 ]
