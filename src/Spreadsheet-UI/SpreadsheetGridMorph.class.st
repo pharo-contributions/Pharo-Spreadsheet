@@ -134,9 +134,9 @@ SpreadsheetGridMorph >> editCell: aPoint evt: anEvent [
 	"editor autoFit: true."
 	self addMorph: editor.
 	anEvent isNil
-		ifTrue: [ActiveHand newKeyboardFocus: editor]
+		ifTrue: [self activeHand newKeyboardFocus: editor]
 		ifFalse: [
-			ActiveHand newMouseFocus: editor.
+			anEvent hand newMouseFocus: editor.
 			editor mouseDown: anEvent]
 ]
 

@@ -10,8 +10,9 @@ Class {
 { #category : #opening }
 SpreadsheetMorph >> openInWindow [
 	"SpreadsheetMorph new openInWindow"
+	<script>
 	| window |
 	window := SystemWindow labelled: 'Spreadsheet'.
-	window addMorph: self fullFrame: ((LayoutFrame fractions: (0@0 corner: 1@1)) topOffset: 30).
-	window openInWorldExtent: 400@300
+	window addMorph: self fullFrame: (LayoutFrame identity topOffset: 30).
+	window openInWorld 
 ]
