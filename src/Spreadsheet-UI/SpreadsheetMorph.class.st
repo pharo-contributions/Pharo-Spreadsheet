@@ -13,6 +13,6 @@ SpreadsheetMorph >> openInWindow [
 	<script>
 	| window |
 	window := SystemWindow labelled: 'Spreadsheet'.
-	window addMorph: self fullFrame: (LayoutFrame identity topOffset: 30).
+	window addMorph: SpreadsheetGridMorph new fullFrame: (LayoutFrame identity topOffset: 30).
 	window openInWorld 
 ]
