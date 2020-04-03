@@ -7,6 +7,12 @@ Class {
 	#category : #'Spreadsheet-UI-Morphic'
 }
 
+{ #category : #examples }
+SpreadsheetMorph class >> example [
+
+	self new openInWindow
+]
+
 { #category : #opening }
 SpreadsheetMorph >> openInWindow [
 	"SpreadsheetMorph new openInWindow"

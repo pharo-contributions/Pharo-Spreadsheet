@@ -17,7 +17,7 @@ Class {
 SpreadsheetGridMorph class >> example [
 
 	| sheet |
-	sheet := SpreadsheetGridMorph open.
+	sheet := self open.
 	sheet cellStringAt: 1@1 put: '10'.
 	sheet cellStringAt: 1@2 put: '20'.
 	sheet cellStringAt: 1@3 put: '=A1+A2'.
@@ -28,16 +28,22 @@ SpreadsheetGridMorph class >> example [
 SpreadsheetGridMorph class >> exampleDate [
 
 	| sheet |
-	sheet := SpreadsheetGridMorph open.
+	sheet := self open.
 	sheet cellStringAt: 1@1 put: '=DATE'.
 
+]
+
+{ #category : #examples }
+SpreadsheetGridMorph class >> exampleWindow [
+
+	self new openInWindow 
 ]
 
 { #category : #'instance creation' }
 SpreadsheetGridMorph class >> open [
 	<script>
 	
-	^(self new )
+	^(self new)
 		extent: 300@200;
 		openInWorld
 ]
@@ -174,14 +180,16 @@ SpreadsheetGridMorph >> moveEditCellNextLine [
 
 { #category : #opening }
 SpreadsheetGridMorph >> openInWindow [
-	"SpreadsheetGridMorph new openInWindow"
+	<script: 'SpreadsheetGridMorph new openInWindow'>
+	
 	| window scrollPane |
 	window := SystemWindow labelled: 'Spreadsheet'.
 	scrollPane := ScrollPane new.
 	scrollPane scroller offset: 0@0; addMorph: (self extent: 500@500).
 	scrollPane alwaysShowHScrollBar: true.
-	window addMorph: scrollPane fullFrame: ((LayoutFrame fractions: (0@0 corner: 1@1)) topOffset: 30).
-	window openInWorldExtent: 400@300
+	window addMorph: scrollPane fullFrame: (LayoutFrame identity topOffset: 30).
+	window extent: 400@300.
+	window openInWorld
 ]
 
 { #category : #private }
