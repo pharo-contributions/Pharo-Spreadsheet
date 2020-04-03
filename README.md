@@ -2,4 +2,4 @@
 Spreadsheet functionality for Pharo based on Morphic
 
 
-![alt text](./doc/screen.png "Screenshot")
+![alt text](doc/screenshot.png "Screenshot")
